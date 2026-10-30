@@ -29,7 +29,7 @@ Umusare sends a professional driver to take a customer home in the customer's ow
    mvn spring-boot:run
    ```
 
-4. The API runs on `http://localhost:8080`. The tables are created automatically in `umusare_db`.
+4. The API runs on `http://localhost:8081`. The tables are created automatically in `umusare_db`.
 
 ## Base paths
 
