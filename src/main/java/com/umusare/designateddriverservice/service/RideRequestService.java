@@ -1,10 +1,12 @@
 package com.umusare.designateddriverservice.service;
 
 import com.umusare.designateddriverservice.entity.RideRequest;
+import com.umusare.designateddriverservice.entity.RideStatus;
 import com.umusare.designateddriverservice.repository.RideRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -49,5 +51,13 @@ public class RideRequestService {
         }
         rideRequestRepository.deleteById(id);
         return "Ride request deleted successfully";
+    }
+
+    public List<RideRequest> getByStatus(RideStatus status) {
+        return rideRequestRepository.findByStatusOrderByRideDateAsc(status);
+    }
+
+    public List<RideRequest> getBetween(LocalDate start, LocalDate end) {
+        return rideRequestRepository.findByRideDateBetweenOrderByRideDateAsc(start, end);
     }
 }

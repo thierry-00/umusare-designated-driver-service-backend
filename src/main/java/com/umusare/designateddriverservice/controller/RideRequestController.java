@@ -1,12 +1,14 @@
 package com.umusare.designateddriverservice.controller;
 
 import com.umusare.designateddriverservice.entity.RideRequest;
+import com.umusare.designateddriverservice.entity.RideStatus;
 import com.umusare.designateddriverservice.service.RideRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -53,5 +55,17 @@ public class RideRequestController {
             return new ResponseEntity<>(msg, HttpStatus.OK);
         }
         return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/by-status")
+    public ResponseEntity<List<RideRequest>> getByStatus(@RequestParam RideStatus status) {
+        return new ResponseEntity<>(rideRequestService.getByStatus(status), HttpStatus.OK);
+    }
+
+    @GetMapping("/between")
+    public ResponseEntity<List<RideRequest>> getBetween(@RequestParam String start, @RequestParam String end) {
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(rideRequestService.getBetween(startDate, endDate), HttpStatus.OK);
     }
 }
