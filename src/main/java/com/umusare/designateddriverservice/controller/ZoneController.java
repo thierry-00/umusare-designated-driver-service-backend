@@ -54,4 +54,9 @@ public class ZoneController {
         }
         return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/free")
+    public ResponseEntity<List<Zone>> getFree() {
+        return new ResponseEntity<>(zoneService.getFree(), HttpStatus.OK);
+    }
 }

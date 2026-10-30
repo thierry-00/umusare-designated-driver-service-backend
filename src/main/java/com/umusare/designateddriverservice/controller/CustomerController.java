@@ -2,6 +2,7 @@ package com.umusare.designateddriverservice.controller;
 
 import com.umusare.designateddriverservice.entity.Customer;
 import com.umusare.designateddriverservice.service.CustomerService;
+import com.umusare.designateddriverservice.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private DriverService driverService;
 
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Customer customer) {
@@ -58,5 +62,13 @@ public class CustomerController {
     @GetMapping("/by-last-name")
     public ResponseEntity<List<Customer>> getByLastName(@RequestParam String lastName) {
         return new ResponseEntity<>(customerService.getByLastName(lastName), HttpStatus.OK);
+    }
+
+    @GetMapping("/of-driver/{driverId}")
+    public ResponseEntity<Object> getCustomersOfDriver(@PathVariable UUID driverId) {
+        if (driverService.getById(driverId).isEmpty()) {
+            return new ResponseEntity<>("The driver with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customerService.getByDriver(driverId), HttpStatus.OK);
     }
 }

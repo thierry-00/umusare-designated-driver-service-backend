@@ -46,4 +46,8 @@ public class CarTypeService {
         carTypeRepository.deleteById(id);
         return "Car type deleted successfully";
     }
+
+    public List<CarType> getUnused() {
+        return carTypeRepository.findUnusedCarTypes();
+    }
 }

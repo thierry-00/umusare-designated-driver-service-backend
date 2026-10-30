@@ -50,4 +50,8 @@ public class DriverService {
         driverRepository.deleteById(id);
         return "Driver deleted successfully";
     }
+
+    public List<Driver> getByCarType(String name) {
+        return driverRepository.findByCarTypeIgnoreCase(name);
+    }
 }

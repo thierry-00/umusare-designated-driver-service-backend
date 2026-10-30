@@ -54,4 +54,9 @@ public class DriverController {
         }
         return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/by-car-type")
+    public ResponseEntity<List<Driver>> getByCarType(@RequestParam String name) {
+        return new ResponseEntity<>(driverService.getByCarType(name), HttpStatus.OK);
+    }
 }

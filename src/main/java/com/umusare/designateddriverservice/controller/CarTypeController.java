@@ -54,4 +54,9 @@ public class CarTypeController {
         }
         return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/unused")
+    public ResponseEntity<List<CarType>> getUnused() {
+        return new ResponseEntity<>(carTypeService.getUnused(), HttpStatus.OK);
+    }
 }
