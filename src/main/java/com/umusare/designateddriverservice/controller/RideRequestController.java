@@ -21,8 +21,15 @@ public class RideRequestController {
     private RideRequestService rideRequestService;
 
     @PostMapping("/save")
-    public ResponseEntity<String> save(@RequestBody RideRequest rideRequest) {
-        return new ResponseEntity<>(rideRequestService.save(rideRequest), HttpStatus.CREATED);
+    public ResponseEntity<Object> save(@RequestBody RideRequest rideRequest) {
+        String msg = rideRequestService.save(rideRequest);
+        if (msg.equals("Ride request date cannot be in the past")) {
+            return new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+        }
+        if (msg.equals("Driver is already dispatched on that date")) {
+            return new ResponseEntity<>(msg, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(msg, HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
@@ -67,5 +74,17 @@ public class RideRequestController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(rideRequestService.getBetween(startDate, endDate), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Object> updateStatus(@PathVariable UUID id, @RequestParam RideStatus status) {
+        String msg = rideRequestService.updateStatus(id, status);
+        if (msg.equals("The ride request with that id does not exist")) {
+            return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+        }
+        if (msg.startsWith("Cannot change status")) {
+            return new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(msg, HttpStatus.OK);
     }
 }

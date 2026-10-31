@@ -1,5 +1,6 @@
 package com.umusare.designateddriverservice.repository;
 
+import com.umusare.designateddriverservice.entity.Driver;
 import com.umusare.designateddriverservice.entity.RideRequest;
 import com.umusare.designateddriverservice.entity.RideStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ public interface RideRequestRepository extends JpaRepository<RideRequest, UUID> 
     List<RideRequest> findByStatusOrderByRideDateAsc(RideStatus status);
 
     List<RideRequest> findByRideDateBetweenOrderByRideDateAsc(LocalDate start, LocalDate end);
+
+    boolean existsByDriverAndRideDateAndStatusNot(Driver driver, LocalDate rideDate, RideStatus status);
 }

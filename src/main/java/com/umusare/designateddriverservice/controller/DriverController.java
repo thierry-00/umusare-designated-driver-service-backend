@@ -59,4 +59,28 @@ public class DriverController {
     public ResponseEntity<List<Driver>> getByCarType(@RequestParam String name) {
         return new ResponseEntity<>(driverService.getByCarType(name), HttpStatus.OK);
     }
+
+    @PutMapping("/{driverId}/car-types/{carTypeId}")
+    public ResponseEntity<Object> addCarType(@PathVariable UUID driverId, @PathVariable UUID carTypeId) {
+        String msg = driverService.addCarType(driverId, carTypeId);
+        if (msg.equals("The driver with that id does not exist") || msg.equals("That car type does not exist")) {
+            return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+        }
+        if (msg.equals("The driver already has that car type")) {
+            return new ResponseEntity<>(msg, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{driverId}/zone")
+    public ResponseEntity<Object> changeZone(@PathVariable UUID driverId, @RequestParam int zoneNumber) {
+        String msg = driverService.changeZone(driverId, zoneNumber);
+        if (msg.equals("The driver with that id does not exist") || msg.equals("The zone with that zoneNumber does not exist")) {
+            return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+        }
+        if (msg.equals("That zone is taken by another driver")) {
+            return new ResponseEntity<>(msg, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
 }

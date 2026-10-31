@@ -5,6 +5,7 @@ import com.umusare.designateddriverservice.entity.RideStatus;
 import com.umusare.designateddriverservice.repository.RideRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +19,13 @@ public class RideRequestService {
     private RideRequestRepository rideRequestRepository;
 
     public String save(RideRequest rideRequest) {
+        rideRequest.setStatus(RideStatus.REQUESTED);
+        if (rideRequest.getRideDate().isBefore(LocalDate.now())) {
+            return "Ride request date cannot be in the past";
+        }
+        if (rideRequest.getDriver() != null && rideRequestRepository.existsByDriverAndRideDateAndStatusNot(rideRequest.getDriver(), rideRequest.getRideDate(), RideStatus.CANCELLED)) {
+            return "Driver is already dispatched on that date";
+        }
         rideRequestRepository.save(rideRequest);
         return "Ride request saved successfully";
     }
@@ -59,5 +67,23 @@ public class RideRequestService {
 
     public List<RideRequest> getBetween(LocalDate start, LocalDate end) {
         return rideRequestRepository.findByRideDateBetweenOrderByRideDateAsc(start, end);
+    }
+
+    @Transactional
+    public String updateStatus(UUID id, RideStatus newStatus) {
+        Optional<RideRequest> record = rideRequestRepository.findById(id);
+        if (record.isEmpty()) {
+            return "The ride request with that id does not exist";
+        }
+        RideRequest rr = record.get();
+        RideStatus current = rr.getStatus();
+        boolean allowed = (current == RideStatus.REQUESTED && (newStatus == RideStatus.ASSIGNED || newStatus == RideStatus.CANCELLED))
+                || (current == RideStatus.ASSIGNED && (newStatus == RideStatus.DROPPED_OFF || newStatus == RideStatus.CANCELLED));
+        if (!allowed) {
+            return "Cannot change status from " + current + " to " + newStatus;
+        }
+        rr.setStatus(newStatus);
+        rideRequestRepository.save(rr);
+        return "Ride request status updated successfully";
     }
 }
