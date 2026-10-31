@@ -2,6 +2,7 @@ package com.umusare.designateddriverservice.service;
 
 import com.umusare.designateddriverservice.entity.RideRequest;
 import com.umusare.designateddriverservice.entity.RideStatus;
+import com.umusare.designateddriverservice.repository.PaymentRepository;
 import com.umusare.designateddriverservice.repository.RideRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class RideRequestService {
 
     @Autowired
     private RideRequestRepository rideRequestRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
 
     public String save(RideRequest rideRequest) {
         rideRequest.setStatus(RideStatus.REQUESTED);
@@ -56,6 +60,10 @@ public class RideRequestService {
     public String delete(UUID id) {
         if (!rideRequestRepository.existsById(id)) {
             return "The ride request with that id does not exist";
+        }
+        RideRequest rr = rideRequestRepository.findById(id).get();
+        if (paymentRepository.existsByRideRequest(rr)) {
+            return "That ride request has payments, delete them first";
         }
         rideRequestRepository.deleteById(id);
         return "Ride request deleted successfully";

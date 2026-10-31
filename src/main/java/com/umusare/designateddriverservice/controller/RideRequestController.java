@@ -56,10 +56,13 @@ public class RideRequestController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable UUID id) {
+    public ResponseEntity<Object> delete(@PathVariable UUID id) {
         String msg = rideRequestService.delete(id);
         if (msg.equals("Ride request deleted successfully")) {
             return new ResponseEntity<>(msg, HttpStatus.OK);
+        }
+        if (msg.equals("That ride request has payments, delete them first")) {
+            return new ResponseEntity<>(msg, HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
     }
