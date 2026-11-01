@@ -40,6 +40,7 @@ Umusare sends a professional driver to take a customer home in the customer's ow
 | Driver | /api/drivers |
 | Customer | /api/customers |
 | RideRequest | /api/ride-requests |
+| Payment | /api/payments |
 
 ## Postman
 

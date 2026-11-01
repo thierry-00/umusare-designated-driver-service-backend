@@ -1,10 +1,1485 @@
 {
   "info": {
-    "_postman_id": "8b4e8e41-4fc7-4e16-a4cc-274280000001",
-    "name": "Umusare Designated Driver Service - Part A",
-    "description": "Part A CRUD requests and seed data for the Umusare Designated Driver Service backend.",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "_postman_id": "aff1916f-4010-4c44-a2b1-2f6a2363c0ae",
+    "name": "Umusare Designated Driver Service - Midterm",
+    "description": "CRUD and requirements (A2, B1-B3, C1-C4, D1-D4, E1-E3, F1-F2).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58472348",
+    "_collection_link": "https://go.postman.co/collection/58472348-aff1916f-4010-4c44-a2b1-2f6a2363c0ae?source=collection_link"
   },
+  "item": [
+    {
+      "name": "A - Domain model and CRUD",
+      "item": [
+        {
+          "name": "A2 - Save Manual car type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Manual\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Automatic car type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Automatic\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save SUV car type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"SUV\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Pickup car type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Pickup\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Get car types and save IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const carTypes = pm.response.json();",
+                  "const ids = { 'Manual': 'manualId', 'Automatic': 'automaticId', 'SUV': 'suvId', 'Pickup': 'pickupId' };",
+                  "carTypes.forEach((carType) => { if (ids[carType.name]) pm.collectionVariables.set(ids[carType.name], carType.id); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save zone 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"zoneNumber\":1,\"name\":\"Kimihurura\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save zone 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"zoneNumber\":2,\"name\":\"Kacyiru\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save zone 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"zoneNumber\":3,\"name\":\"Remera\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save zone 4",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"zoneNumber\":4,\"name\":\"Nyamirambo\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Get zones and save IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const zones = pm.response.json();",
+                  "zones.forEach((zone) => pm.collectionVariables.set('zone' + zone.zoneNumber + 'Id', zone.id));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Alice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Alice\",\"lastName\":\"Gatete\",\"phone\":\"0788123456\",\"homeAddress\":\"KG 7 Ave, Kacyiru\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Emmanuel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Emmanuel\",\"lastName\":\"Gatete\",\"phone\":\"0788234567\",\"homeAddress\":\"KN 3 Rd, Nyarugenge\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Diane",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Diane\",\"lastName\":\"Uwase\",\"phone\":\"0788345678\",\"homeAddress\":\"KG 11 Ave, Remera\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Kevin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Kevin\",\"lastName\":\"Nshuti\",\"phone\":\"0788456789\",\"homeAddress\":\"KK 15 Rd, Kicukiro\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save Grace",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Grace\",\"lastName\":\"Mukamana\",\"phone\":\"0788567890\",\"homeAddress\":\"KG 9 Ave, Nyarutarama\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Get customers and save IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const customers = pm.response.json();",
+                  "customers.forEach((customer) => {",
+                  "    const ids = {",
+                  "        '0788123456': 'aliceId',",
+                  "        '0788234567': 'emmanuelId',",
+                  "        '0788345678': 'dianeId',",
+                  "        '0788456789': 'kevinId',",
+                  "        '0788567890': 'graceId'",
+                  "    };",
+                  "    if (ids[customer.phone]) pm.collectionVariables.set(ids[customer.phone], customer.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save driver Jean Claude",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Jean Claude\",\"lastName\":\"Habimana\",\"licenseNumber\":\"RW-DL-1001\",\"zone\":{\"id\":\"{{zone1Id}}\"},\"carTypes\":[{\"id\":\"{{manualId}}\"},{\"id\":\"{{automaticId}}\"}]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save driver Eric",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Eric\",\"lastName\":\"Ndayisaba\",\"licenseNumber\":\"RW-DL-1002\",\"zone\":{\"id\":\"{{zone2Id}}\"},\"carTypes\":[{\"id\":\"{{suvId}}\"}]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save driver Patrick",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Patrick\",\"lastName\":\"Mugisha\",\"licenseNumber\":\"RW-DL-1003\",\"zone\":{\"id\":\"{{zone3Id}}\"},\"carTypes\":[{\"id\":\"{{automaticId}}\"}]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Get drivers and save IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const drivers = pm.response.json();",
+                  "drivers.forEach((driver) => {",
+                  "    const ids = {",
+                  "        'RW-DL-1001': 'driver1Id',",
+                  "        'RW-DL-1002': 'driver2Id',",
+                  "        'RW-DL-1003': 'driver3Id'",
+                  "    };",
+                  "    if (ids[driver.licenseNumber]) pm.collectionVariables.set(ids[driver.licenseNumber], driver.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save ride request for Alice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-05\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kimironko Bar Street\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save ride request for Diane",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-12\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kigali Heights\",\"carPlate\":\"RAC 456 B\",\"customer\":{\"id\":\"{{dianeId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save assigned ride request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-20\",\"status\":\"ASSIGNED\",\"pickupLocation\":\"Kibagabaga Hill Lounge\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save cancelled ride request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-20\",\"status\":\"CANCELLED\",\"pickupLocation\":\"Nyamirambo Night Market\",\"carPlate\":\"RAE 789 C\",\"customer\":{\"id\":\"{{emmanuelId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save requested ride request for Kevin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-25\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Remera Taxi Park Bar\",\"carPlate\":\"RAF 321 D\",\"customer\":{\"id\":\"{{kevinId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save requested ride request for Grace",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-10-31\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Kigali Convention Centre\",\"carPlate\":\"RAG 654 E\",\"customer\":{\"id\":\"{{graceId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save assigned ride request for Alice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-11-03\",\"status\":\"ASSIGNED\",\"pickupLocation\":\"Gisozi Memorial Road\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save requested ride request for Emmanuel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-11-08\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Kicukiro Centre\",\"carPlate\":\"RAE 789 C\",\"customer\":{\"id\":\"{{emmanuelId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save cancelled ride request for Diane",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-11-14\",\"status\":\"CANCELLED\",\"pickupLocation\":\"Nyarutarama Golf Club\",\"carPlate\":\"RAC 456 B\",\"customer\":{\"id\":\"{{dianeId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Save dropped off ride request for Kevin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-11-21\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kimihurura Roundabout\",\"carPlate\":\"RAF 321 D\",\"customer\":{\"id\":\"{{kevinId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Get ride requests",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const rrs = pm.response.json();",
+                  "const req = rrs.find(r => r.status === 'REQUESTED') || rrs[0];",
+                  "if (req) pm.collectionVariables.set('rideRequestId', req.id);",
+                  "const dropped = rrs.find(r => r.status === 'DROPPED_OFF');",
+                  "if (dropped) pm.collectionVariables.set('droppedRideRequestId', dropped.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/all",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "B - Derived queries",
+      "item": [
+        {
+          "name": "B1 - Find customers by lastName",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/by-last-name?lastName=gatete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "by-last-name"
+              ],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "gatete"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - Ride requests by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/by-status?status=REQUESTED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "REQUESTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - Ride requests in date range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/between?start=2026-10-01&end=2026-10-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "between"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-10-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "C - JPQL with joins",
+      "item": [
+        {
+          "name": "C1 - Drivers by car type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/by-car-type?name=manual",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "by-car-type"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "manual"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 - Free zones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/zones/free",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "zones",
+                "free"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 - Car types nobody holds",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/car-types/unused",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "car-types",
+                "unused"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - Customers of a driver",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/customers/of-driver/{{driver1Id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "customers",
+                "of-driver",
+                "{{driver1Id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "D - Business rules",
+      "item": [
+        {
+          "name": "D1 - Safe saving (ride request)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"rideDate\":\"2026-12-01\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Test Location\",\"carPlate\":\"RAD 000 Z\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/save",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 - Status flow",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/{{rideRequestId}}/status?status=ASSIGNED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "{{rideRequestId}}",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ASSIGNED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - Add car type to driver",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/{{driver1Id}}/car-types/{{pickupId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "{{driver1Id}}",
+                "car-types",
+                "{{pickupId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D4 - Move driver to zone",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/drivers/{{driver1Id}}/zone?zoneNumber=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "drivers",
+                "{{driver1Id}}",
+                "zone"
+              ],
+              "query": [
+                {
+                  "key": "zoneNumber",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "E - Payment",
+      "item": [
+        {
+          "name": "E1 - Write a payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"paymentMethod\":\"MTN Mobile Money\",\"notes\":\"Paid on arrival\",\"amountRwf\":15000}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/save?rideRequestId={{droppedRideRequestId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "rideRequestId",
+                  "value": "{{droppedRideRequestId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E2 - Payment history of customer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const payments = pm.response.json();",
+                  "if (payments.length) pm.collectionVariables.set('paymentId', payments[0].id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/customer/{{phone}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "customer",
+                "{{phone}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3 - Delete payment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/delete/{{paymentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "delete",
+                "{{paymentId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "F - Reports and bulk updates",
+      "item": [
+        {
+          "name": "F1 - Ride requests per status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/stats/by-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "stats",
+                "by-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 - Driver is absent (cancel day)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ride-requests/cancel-day?driverId={{driver1Id}}&date=2026-10-20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ride-requests",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "driverId",
+                  "value": "{{driver1Id}}"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
   "variable": [
     {
       "key": "baseUrl",
@@ -77,1017 +1552,18 @@
     {
       "key": "rideRequestId",
       "value": ""
-    }
-  ],
-  "item": [
-    {
-      "name": "A2 - Car types",
-      "item": [
-        {
-          "name": "A2 - Save Manual car type",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\":\"Manual\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/car-types/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "car-types",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Automatic car type",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\":\"Automatic\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/car-types/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "car-types",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save SUV car type",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\":\"SUV\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/car-types/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "car-types",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Pickup car type",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"name\":\"Pickup\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/car-types/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "car-types",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Get car types and save IDs",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "const carTypes = pm.response.json();",
-                  "carTypes.forEach((carType) => {",
-                  "    const key = carType.name.toLowerCase() + 'Id';",
-                  "    pm.collectionVariables.set(key, carType.id);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/car-types/all",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "car-types",
-                "all"
-              ]
-            }
-          }
-        }
-      ]
     },
     {
-      "name": "A2 - Zones",
-      "item": [
-        {
-          "name": "A2 - Save zone 1",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"zoneNumber\":1,\"name\":\"Kimihurura\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/zones/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "zones",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save zone 2",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"zoneNumber\":2,\"name\":\"Kacyiru\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/zones/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "zones",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save zone 3",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"zoneNumber\":3,\"name\":\"Remera\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/zones/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "zones",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save zone 4",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"zoneNumber\":4,\"name\":\"Nyamirambo\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/zones/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "zones",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Get zones and save IDs",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "const zones = pm.response.json();",
-                  "zones.forEach((zone) => pm.collectionVariables.set('zone' + zone.zoneNumber + 'Id', zone.id));"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/zones/all",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "zones",
-                "all"
-              ]
-            }
-          }
-        }
-      ]
+      "key": "phone",
+      "value": "0788123456"
     },
     {
-      "name": "A2 - Customers",
-      "item": [
-        {
-          "name": "A2 - Save Alice",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Alice\",\"lastName\":\"Gatete\",\"phone\":\"0788123456\",\"homeAddress\":\"KG 7 Ave, Kacyiru\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Emmanuel",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Emmanuel\",\"lastName\":\"Gatete\",\"phone\":\"0788234567\",\"homeAddress\":\"KN 3 Rd, Nyarugenge\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Diane",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Diane\",\"lastName\":\"Uwase\",\"phone\":\"0788345678\",\"homeAddress\":\"KG 11 Ave, Remera\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Kevin",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Kevin\",\"lastName\":\"Nshuti\",\"phone\":\"0788456789\",\"homeAddress\":\"KK 15 Rd, Kicukiro\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save Grace",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Grace\",\"lastName\":\"Mukamana\",\"phone\":\"0788567890\",\"homeAddress\":\"KG 9 Ave, Nyarutarama\"}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Get customers and save IDs",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "const customers = pm.response.json();",
-                  "customers.forEach((customer) => {",
-                  "    const ids = {",
-                  "        '0788123456': 'aliceId',",
-                  "        '0788234567': 'emmanuelId',",
-                  "        '0788345678': 'dianeId',",
-                  "        '0788456789': 'kevinId',",
-                  "        '0788567890': 'graceId'",
-                  "    };",
-                  "    if (ids[customer.phone]) pm.collectionVariables.set(ids[customer.phone], customer.id);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/customers/all",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "customers",
-                "all"
-              ]
-            }
-          }
-        }
-      ]
+      "key": "paymentId",
+      "value": ""
     },
     {
-      "name": "A2 - Drivers",
-      "item": [
-        {
-          "name": "A2 - Save driver Jean Claude",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Jean Claude\",\"lastName\":\"Habimana\",\"licenseNumber\":\"RW-DL-1001\",\"zone\":{\"id\":\"{{zone1Id}}\"},\"carTypes\":[{\"id\":\"{{manualId}}\"},{\"id\":\"{{automaticId}}\"}]}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/drivers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "drivers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save driver Eric",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Eric\",\"lastName\":\"Ndayisaba\",\"licenseNumber\":\"RW-DL-1002\",\"zone\":{\"id\":\"{{zone2Id}}\"},\"carTypes\":[{\"id\":\"{{suvId}}\"}]}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/drivers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "drivers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save driver Patrick",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"firstName\":\"Patrick\",\"lastName\":\"Mugisha\",\"licenseNumber\":\"RW-DL-1003\",\"zone\":{\"id\":\"{{zone3Id}}\"},\"carTypes\":[{\"id\":\"{{automaticId}}\"}]}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/drivers/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "drivers",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Get drivers and save IDs",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "const drivers = pm.response.json();",
-                  "drivers.forEach((driver) => {",
-                  "    const ids = {",
-                  "        'RW-DL-1001': 'driver1Id',",
-                  "        'RW-DL-1002': 'driver2Id',",
-                  "        'RW-DL-1003': 'driver3Id'",
-                  "    };",
-                  "    if (ids[driver.licenseNumber]) pm.collectionVariables.set(ids[driver.licenseNumber], driver.id);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/drivers/all",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "drivers",
-                "all"
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "A2 - Ride requests",
-      "item": [
-        {
-          "name": "A2 - Save ride request for Alice",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-05\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kimironko Bar Street\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save ride request for Diane",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-12\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kigali Heights\",\"carPlate\":\"RAC 456 B\",\"customer\":{\"id\":\"{{dianeId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save assigned ride request",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-20\",\"status\":\"ASSIGNED\",\"pickupLocation\":\"Kibagabaga Hill Lounge\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save cancelled ride request",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-20\",\"status\":\"CANCELLED\",\"pickupLocation\":\"Nyamirambo Night Market\",\"carPlate\":\"RAE 789 C\",\"customer\":{\"id\":\"{{emmanuelId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save requested ride request for Kevin",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-25\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Remera Taxi Park Bar\",\"carPlate\":\"RAF 321 D\",\"customer\":{\"id\":\"{{kevinId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save requested ride request for Grace",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-10-31\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Kigali Convention Centre\",\"carPlate\":\"RAG 654 E\",\"customer\":{\"id\":\"{{graceId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save assigned ride request for Alice",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-11-03\",\"status\":\"ASSIGNED\",\"pickupLocation\":\"Gisozi Memorial Road\",\"carPlate\":\"RAD 123 A\",\"customer\":{\"id\":\"{{aliceId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save requested ride request for Emmanuel",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-11-08\",\"status\":\"REQUESTED\",\"pickupLocation\":\"Kicukiro Centre\",\"carPlate\":\"RAE 789 C\",\"customer\":{\"id\":\"{{emmanuelId}}\"},\"driver\":{\"id\":\"{{driver2Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save cancelled ride request for Diane",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-11-14\",\"status\":\"CANCELLED\",\"pickupLocation\":\"Nyarutarama Golf Club\",\"carPlate\":\"RAC 456 B\",\"customer\":{\"id\":\"{{dianeId}}\"},\"driver\":{\"id\":\"{{driver3Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Save dropped off ride request for Kevin",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"rideDate\":\"2026-11-21\",\"status\":\"DROPPED_OFF\",\"pickupLocation\":\"Kimihurura Roundabout\",\"carPlate\":\"RAF 321 D\",\"customer\":{\"id\":\"{{kevinId}}\"},\"driver\":{\"id\":\"{{driver1Id}}\"}}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/save",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "save"
-              ]
-            }
-          }
-        },
-        {
-          "name": "A2 - Get ride requests",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/ride-requests/all",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ride-requests",
-                "all"
-              ]
-            }
-          }
-        }
-      ]
+      "key": "droppedRideRequestId",
+      "value": ""
     }
   ]
 }

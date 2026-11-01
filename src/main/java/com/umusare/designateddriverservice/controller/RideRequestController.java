@@ -90,4 +90,15 @@ public class RideRequestController {
         }
         return new ResponseEntity<>(msg, HttpStatus.OK);
     }
+
+    @GetMapping("/stats/by-status")
+    public ResponseEntity<List<Object[]>> getStatsByStatus() {
+        return new ResponseEntity<>(rideRequestService.getStatsByStatus(), HttpStatus.OK);
+    }
+
+    @PatchMapping("/cancel-day")
+    public ResponseEntity<String> cancelDay(@RequestParam UUID driverId, @RequestParam String date) {
+        int count = rideRequestService.cancelDay(driverId, LocalDate.parse(date));
+        return new ResponseEntity<>(count + " ride requests cancelled", HttpStatus.OK);
+    }
 }

@@ -77,6 +77,15 @@ public class RideRequestService {
         return rideRequestRepository.findByRideDateBetweenOrderByRideDateAsc(start, end);
     }
 
+    public List<Object[]> getStatsByStatus() {
+        return rideRequestRepository.countByStatus();
+    }
+
+    @Transactional
+    public int cancelDay(UUID driverId, LocalDate date) {
+        return rideRequestRepository.cancelDay(driverId, date);
+    }
+
     @Transactional
     public String updateStatus(UUID id, RideStatus newStatus) {
         Optional<RideRequest> record = rideRequestRepository.findById(id);
